@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 10 Classmates System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f8f9fa; 
+            padding-top: 80px; /* Space for the fixed navbar */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: #0d6efd !important;
+        }
+        .nav-link.active {
+            color: #0d6efd !important;
+            border-bottom: 2px solid #0d6efd;
+        }
+
+        /* Card Styling */
+        .card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            width: 100%; 
+            max-width: 900px; 
+            margin-bottom: 20px; 
+            border: none;
+        }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 8px 0; 
+            border: 1px solid #dee2e6; 
+            border-radius: 5px; 
+            font-size: 16px; 
+        }
+
+        .btn-group { display: flex; gap: 15px; margin-top: 15px; }
+        button { 
+            flex: 1; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: 600; 
+            transition: transform 0.1s, opacity 0.2s; 
+        }
+        button:active { transform: scale(0.98); }
+        
+        .btn-add { background-color: #0d6efd; color: white; }
+        .btn-show { background-color: #198754; color: white; }
+        
+        #list-section { display: none; } 
+        .list-content { line-height: 1.8; color: #333; }
+        
+        /* List item styling */
+        .student-entry {
+            padding: 10px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">Grade 10 Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="classmatelist.html">Classmate List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="attendancetracker.html">Attendance Checker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classactivities.html">Class Activities</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>📘 Classmates System</h1>
+        <p class="text-muted">Manage and view your classmate directory</p>
+    </div>
+
+    <div class="card">
+        <input type="text" id="nameInput" placeholder="Full Name">
+        <input type="text" id="sectionInput" placeholder="Section (e.g. 10-Emerald)">
+        <input type="text" id="subjectInput" placeholder="Favorite Subject">
+        
+        <div class="btn-group">
+            <button class="btn-add" onclick="addNewClassmate()">Add Classmate</button>
+            <button class="btn-show" onclick="toggleList()">Show/Hide List</button>
+        </div>
+    </div>
+
+    <div class="card" id="list-section">
+        <h2 style="font-size: 1.2rem;"> Classmate List</h2>
+        <hr style="border: 0.5px solid #eee; margin: 15px 0;">
+        <div id="classmateDisplay" class="list-content">
+            <!-- Classmates will appear here -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        class Classmate {
+            constructor(name, section, favoriteSubject) {
+                this.name = name;
+                this.section = section;
+                this.favoriteSubject = favoriteSubject;
+            }
+
+            introduce() {
+                return `Hi! I am <strong>${this.name}</strong> from <em>${this.section}</em>. My favorite subject is ${this.favoriteSubject}.`;
+            }
+        }
+
+        let classmates = [
+            new Classmate("Kristine", "10-Emerald", "Math"),
+            new Classmate("Jean", "10-Sapphire", "Science"),
+            new Classmate("Hariette", "10-Ruby", "English"),
+            new Classmate("Jubilee", "10-Topaz", "Math"),
+            new Classmate("Vivian", "10-Emerald", "Social Studies")
+        ];
+
+        function addNewClassmate() {
+            const name = document.getElementById('nameInput').value;
+            const section = document.getElementById('sectionInput').value;
+            const subject = document.getElementById('subjectInput').value;
+
+            if (name && section && subject) {
+                const newStudent = new Classmate(name, section, subject);
+                classmates.push(newStudent);
+                
+                document.getElementById('nameInput').value = '';
+                document.getElementById('sectionInput').value = '';
+                document.getElementById('subjectInput').value = '';
+                
+                alert("Classmate added successfully!");
+                renderList(); 
+            } else {
+                alert("Please fill in all boxes.");
+            }
+        }
+
+        function renderList() {
+            const display = document.getElementById('classmateDisplay');
+            display.innerHTML = ""; 
+            
+            classmates.forEach(student => {
+                const div = document.createElement('div');
+                div.className = "student-entry";
+                div.innerHTML = student.introduce();
+                display.appendChild(div);
+            });
+        }
+
+        function toggleList() {
+            const section = document.getElementById('list-section');
+            if (section.style.display === "none" || section.style.display === "") {
+                renderList();
+                section.style.display = "block";
+            } else {
+                section.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

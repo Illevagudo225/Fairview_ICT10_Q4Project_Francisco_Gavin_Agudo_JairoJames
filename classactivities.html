@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 10 Class Activities</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f8f9fa; 
+            padding-top: 80px; /* Space for the fixed navbar */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        /* Navbar Styling (Matching your code exactly) */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: #0d6efd !important;
+        }
+        .nav-link.active {
+            color: #0d6efd !important;
+            border-bottom: 2px solid #0d6efd;
+        }
+
+        /* Header Styling */
+        .header { text-align: center; margin-bottom: 30px; }
+
+        /* Gallery Grid - Replicating the Screenshot layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns like the screenshot */
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px 40px 20px;
+        }
+
+        /* Gallery Card Styling (Matching your card style) */
+        .activity-card { 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            overflow: hidden; /* Keeps image corners rounded */
+            border: none;
+            transition: transform 0.2s;
+        }
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #e9ecef;
+        }
+
+        .activity-info {
+            padding: 15px;
+        }
+
+        .student-label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: block;
+            color: #333;
+        }
+
+        .activity-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustment for mobile */
+        @media (max-width: 992px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 576px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">Grade 10 Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="classmatelist.html">Classmate List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="attendancetracker.html">Attendance Checker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="classactivities.html">Class Activities</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>📸 Our Journey</h1>
+        <p class="text-muted">Highlights from the 10-Emerald school year!</p>
+    </div>
+
+    <!-- Gallery Grid based on Screenshot 2026-05-06 234142.jpg -->
+    <div class="gallery-grid">
+        
+        <!-- Card 1 -->
+        <div class="activity-card">
+            <img src="peace.webp" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">PEACE CONGRESS!</span>
+                <span class="activity-text">nice fun! congesss!</span>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="activity-card">
+            <img src="Photo_on_4-17-26_at_11.17.jpg" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">entrep fair!</span>
+                <span class="activity-text">yummy spuds!</span>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="activity-card">
+            <img src="intramjrals.webp" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">intrqamurals!</span>
+                <span class="activity-text">hooray!</span>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="activity-card">
+            <img src="IMG_1461.webp" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">camping!</span>
+                <span class="activity-text">we love nature</span>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="activity-card">
+            <img src="christmas party.webp" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">christmas party hooray!</span>
+                <span class="activity-text">fun christmas party</span>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="activity-card">
+            <img src="slam.jpg" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">slamdunk minigame admins!</span>
+                <span class="activity-text">during mini entrep fair ? (forgot what it was called)</span>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="activity-card">
+            <img src="halloween.png" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">halloween party!</span>
+                <span class="activity-text">nice fun costume party</span>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="activity-card">
+            <img src="HALLOWEEN.jpg" alt="Placeholder" class="activity-img">
+            <div class="activity-info">
+                <span class="student-label">saja boy romance</span>
+                <span class="activity-text">thank you maam sa tiyaga kasi alam kong sobrang tigas ng katawan ko sumayaw (di talaga ako sumasayaw maam hahaha) sobrang fun ng experience ko, and very very very memorable. </span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+
+
+</body>
+</html>
